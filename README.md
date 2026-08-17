@@ -23,6 +23,12 @@ Pushing to `main` publishes automatically via
 `site/` to GitHub Pages. `site/deploy/` and `site/.htaccess` are stripped from
 the published output — they are server config for self-hosting, not content.
 
+**The custom domain lives in Settings → Pages, not in `site/CNAME`.** With the
+Pages source set to "GitHub Actions", GitHub ignores a CNAME file in the
+uploaded artifact and reads the domain from the repository settings. The file
+is kept only for a branch-based or self-hosted deploy; editing it changes
+nothing on Pages.
+
 To host it somewhere other than Pages, see [DEPLOY.md](DEPLOY.md).
 
 ## Working locally

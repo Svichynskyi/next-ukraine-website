@@ -30,19 +30,21 @@ jobs:
       - name: Stage the publishable files
         # site/ holds two things the web root must not expose: deploy/nginx.conf
         # (server config, documentation only) and .htaccess (Apache-only, inert
-        # on Pages). Everything else ships as-is, CNAME included.
+        # on Pages). Everything else ships as-is.
+        #
+        # site/CNAME ships too, but note it does NOT configure the custom
+        # domain: when the Pages source is "GitHub Actions", GitHub ignores a
+        # CNAME file in the artifact and reads the domain from the repository's
+        # Pages settings instead. Verified empirically — the first successful
+        # deploy carried CNAME and left Settings > Pages > Custom domain empty.
+        # The file is kept only so a branch-based or self-hosted deploy would
+        # still find it. Change the domain in Settings, not here.
         run: |
           mkdir -p _pages
           cp -R site/. _pages/
           rm -rf _pages/deploy _pages/.htaccess
           echo "Publishing:"
           find _pages -type f | sort
-
-      - name: Verify the CNAME survived
-        # A missing CNAME silently unsets the custom domain on deploy.
-        run: |
-          test -f _pages/CNAME || { echo "::error::CNAME missing from artifact"; exit 1; }
-          echo "custom domain: $(cat _pages/CNAME)"
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
