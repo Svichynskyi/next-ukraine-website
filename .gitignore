@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# editors
+.vscode/
+.idea/
+*.swp
+
+# local tooling
+.claude/
+node_modules/
+
+# Claude Design export: a 15 MB generated bundle of the older "Home" layout,
+# superseded by "Home v4" and not used to build anything. Kept on disk, out of
+# history — committing it once makes it permanent, removing it later does not.
+# To version it after all: delete the line below, then `git add design/`.
+design/

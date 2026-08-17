@@ -1,0 +1,57 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege: read the repo, write a Pages deployment, mint an OIDC token.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never let two deployments race; queue instead of cancelling a live publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Stage the publishable files
+        # site/ holds two things the web root must not expose: deploy/nginx.conf
+        # (server config, documentation only) and .htaccess (Apache-only, inert
+        # on Pages). Everything else ships as-is, CNAME included.
+        run: |
+          mkdir -p _pages
+          cp -R site/. _pages/
+          rm -rf _pages/deploy _pages/.htaccess
+          echo "Publishing:"
+          find _pages -type f | sort
+
+      - name: Verify the CNAME survived
+        # A missing CNAME silently unsets the custom domain on deploy.
+        run: |
+          test -f _pages/CNAME || { echo "::error::CNAME missing from artifact"; exit 1; }
+          echo "custom domain: $(cat _pages/CNAME)"
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _pages
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

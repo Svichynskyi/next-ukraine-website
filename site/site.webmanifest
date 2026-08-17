@@ -1,0 +1,22 @@
+{
+  "name": "Next Ukraine Foundation",
+  "short_name": "Next Ukraine",
+  "description": "Building the institutional architecture that turns brain drain into brain circulation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#16233c",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
