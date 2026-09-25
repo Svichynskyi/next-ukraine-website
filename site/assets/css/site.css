@@ -546,8 +546,6 @@ a.label--body:hover { color: var(--ink-900); }
   color: var(--text-muted);
 }
 
-.site-footer__legal .nowrap { white-space: nowrap; }
-
 .site-footer__col {
   display: grid;
   gap: var(--space-3);
