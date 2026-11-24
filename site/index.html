@@ -1,36 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Next Ukraine Foundation — Ukraine's future runs through its human capital</title>
-<meta name="description" content="Next Ukraine Foundation builds the institutional architecture that turns brain drain into brain circulation — connecting expertise to the work of modernizing Ukraine's economy.">
-<meta name="theme-color" content="#16233c">
+<title>Next Ukraine Foundation — тут починається brain circulation</title>
+<meta name="description" content="Фонд Next Ukraine повертає, залучає та утримує знання, досвід і таланти — для майбутнього України. Рамка 3R: Return, Recruit, Retain.">
+<meta name="theme-color" content="#202226">
 
-<!-- DEPLOY: set this to the production origin before going live. -->
 <link rel="canonical" href="https://nextukraine.org/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Next Ukraine Foundation">
-<meta property="og:title" content="Ukraine's future runs through its human capital">
-<meta property="og:description" content="We build the institutional architecture that turns brain drain into circulation — connecting expertise to the work of modernizing Ukraine's economy.">
+<meta property="og:title" content="Тут починається brain circulation">
+<meta property="og:description" content="Фонд Next Ukraine повертає, залучає та утримує знання, досвід і таланти — для майбутнього України.">
 <meta property="og:url" content="https://nextukraine.org/">
 <meta property="og:image" content="https://nextukraine.org/assets/img/og-cover.jpg">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="1280">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="uk_UA">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/spectral-400-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/ibmplexmono-500-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-400-cyrillic.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserratalternates-700-cyrillic.woff2" crossorigin>
 
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/site.css">
+
+<!-- Marks that scripting is live. Without it the 3R panels cannot be opened,
+     so CSS expands all three instead of hiding two thirds of the section. -->
+<script>document.documentElement.classList.add('js');</script>
 
 <script type="application/ld+json">
 {
@@ -39,253 +40,482 @@
   "name": "Next Ukraine Foundation",
   "url": "https://nextukraine.org/",
   "email": "argonauts@nextukraine.org",
-  "description": "Next Ukraine Foundation builds and operates the institutional architecture that turns brain drain into brain circulation, connecting Ukrainian and international expertise to the companies, institutions and regions shaping Ukraine's economy.",
-  "logo": "https://nextukraine.org/assets/img/favicon.svg"
+  "inLanguage": "uk",
+  "description": "Український фонд людського капіталу. Розвиває рамку 3R — Return, Recruit, Retain — і дає інституційний дім проєктам, які її втілюють.",
+  "logo": "https://nextukraine.org/assets/img/logo/next-ukraine-lockup.svg"
 }
 </script>
 </head>
 
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Перейти до змісту</a>
 
 <!--
   ==========================================================================
-  LINK MAP — every destination used on this page.
-  Internal pages ship as stubs under /model/, /ugti/ and /about/; replace
-  their contents when the real copy is ready and nothing here needs editing.
-  Two destinations are still unknown and are marked TODO inline:
-    · the LinkedIn company page URL
-    · the /ua/ Ukrainian mirror
+  TODO перед публічним анонсом:
+    · EN-версія — перемикач мови зараз неактивний (див. .lang__opt[disabled])
+    · Команда — три картки з заглушками «Ім'я Прізвище»
+    · Футер, «Документи» — немає цільової сторінки
+    · Форма не надсилає: кнопка показує тост, поруч живий email
   ==========================================================================
 -->
 
 <header class="site-header">
-  <div class="wrap site-header__inner">
+  <div class="wrap">
+    <div class="site-header__bar">
 
-    <a class="site-header__brand" href="#top" aria-label="Next Ukraine Foundation — home">
-      <span class="lockup">
-        <svg class="lockup__mark" width="38" height="38" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-          <g fill="none" stroke="var(--accent-500)" stroke-width="3.3" stroke-linecap="round">
-            <path d="M40.11 19.57 A32 32 0 0 0 18.70 56.65"/>
-            <path d="M28.59 73.78 A32 32 0 0 0 71.41 73.78"/>
-            <path d="M81.30 56.65 A32 32 0 0 0 59.89 19.57"/>
-          </g>
-          <circle cx="22.29" cy="66.00" r="6.7" fill="var(--accent-500)"/>
-          <circle cx="77.71" cy="66.00" r="6.7" fill="var(--accent-500)"/>
-          <circle cx="50.00" cy="18.00" r="7" fill="var(--ink-900)"/>
-        </svg>
-        <span class="lockup__word">Next Ukraine <em>Foundation</em></span>
-      </span>
-    </a>
+      <a class="site-header__logo" href="#top" aria-label="Next Ukraine Foundation — на початок">
+        <img src="assets/img/logo/next-ukraine-lockup.svg" alt="Next Ukraine Foundation" width="420" height="60">
+      </a>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-      <span class="nav-toggle__bars" aria-hidden="true"></span>
-      <span>Menu</span>
-    </button>
+      <nav class="site-nav" aria-label="Основна навігація">
+        <a class="site-nav__link" href="#r3">Рамка 3R</a>
+        <a class="site-nav__link" href="#about">Про фонд</a>
+        <a class="site-nav__link" href="#projects">Проєкти</a>
+        <a class="site-nav__link" href="#ways">Партнерам</a>
+        <a class="site-nav__link" href="#contact">Контакти</a>
+        <span class="lang">
+          <button class="lang__opt" type="button" aria-current="true">UA</button>
+          <span class="lang__sep" aria-hidden="true">/</span>
+          <button class="lang__opt" type="button" disabled title="Англійська версія в підготовці">EN</button>
+        </span>
+      </nav>
 
-    <nav class="site-nav" id="site-nav" aria-label="Primary">
-      <a class="label label--body" href="model/">The model</a>
-      <a class="label label--body" href="ugti/">UGTI</a>
-      <a class="label label--body" href="#focus">What we do</a>
-      <a class="label label--body" href="about/">About</a>
-      <a class="label label--accent" href="mailto:argonauts@nextukraine.org">Get involved</a>
-      <span class="site-nav__lang">
-        <span aria-current="true">EN</span>&thinsp;|&thinsp;<a href="#" hreflang="uk" lang="uk">UA</a><!-- TODO: point at /ua/ once the Ukrainian mirror ships -->
-      </span>
+      <div class="site-header__cta">
+        <a class="btn btn--primary btn--sm" href="#contact">Долучитися</a>
+      </div>
+
+      <button class="nav-toggle" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Мобільна навігація">
+      <a class="mobile-nav__link" href="#r3">Рамка 3R<span aria-hidden="true">↗</span></a>
+      <a class="mobile-nav__link" href="#about">Про фонд<span aria-hidden="true">↗</span></a>
+      <a class="mobile-nav__link" href="#projects">Проєкти<span aria-hidden="true">↗</span></a>
+      <a class="mobile-nav__link" href="#ways">Партнерам<span aria-hidden="true">↗</span></a>
+      <a class="mobile-nav__link" href="#contact">Контакти<span aria-hidden="true">↗</span></a>
+      <div class="mobile-nav__foot">
+        <span class="lang">
+          <button class="lang__opt" type="button" aria-current="true">UA</button>
+          <span class="lang__sep" aria-hidden="true">/</span>
+          <button class="lang__opt" type="button" disabled title="Англійська версія в підготовці">EN</button>
+        </span>
+        <a class="btn btn--primary" href="#contact">Долучитися</a>
+      </div>
     </nav>
-
   </div>
 </header>
 
 <main id="main">
 
-  <!-- 00 · Hero -->
+  <!-- 01 · Hero -->
   <section class="hero" id="top">
-    <div class="hero__body">
-      <div class="hero__inner">
-        <p class="label label--accent hero__eyebrow">Brain circulation</p>
-        <h1 class="h-display">Ukraine's future runs through its <em>human capital</em></h1>
-        <p class="hero__lead">We build the institutional architecture that turns brain drain into circulation — connecting expertise to the work of modernizing Ukraine's economy.</p>
-        <div class="hero__actions">
-          <a class="btn btn--outline" href="model/">Read the model</a>
-          <a class="label label--accent" href="mailto:argonauts@nextukraine.org">Work with us →</a>
-        </div>
-      </div>
-    </div>
-
-    <figure class="hero__figure">
-      <img class="hero__image"
-           src="assets/img/hero.jpg"
-           srcset="assets/img/hero.jpg 1600w, assets/img/hero@2x.jpg 2400w"
-           sizes="(max-width: 880px) 100vw, 50vw"
-           width="1600" height="1280"
-           alt="An engineer at work on a plant floor."
-           fetchpriority="high" decoding="async">
-    </figure>
-  </section>
-
-  <!-- 01 · The case, in figures -->
-  <section class="section section--md" aria-labelledby="figures-heading">
-    <div class="wrap">
-      <h2 class="visually-hidden" id="figures-heading">The case, in figures</h2>
-
-      <div class="stats">
-        <div class="stat">
-          <p class="stat__figure">4.4M</p>
-          <p class="stat__note"><span class="stat__term">Displacement.</span> Ukrainians remain under EU temporary protection, down from a peak of 5.7M — for most, the decision to return is deferred, not made.</p>
-        </div>
-        <div class="stat">
-          <p class="stat__figure">74%</p>
-          <p class="stat__note"><span class="stat__term">Domestic demand.</span> Of Ukrainian employers call labour shortage a serious problem, with over 200,000 vacancies unfilled.</p>
-        </div>
-        <div class="stat">
-          <p class="stat__figure">2026–2040</p>
-          <p class="stat__note"><span class="stat__term">The window.</span> The years in which it is still possible to influence where competencies land and how dense professional networks become.</p>
-        </div>
-      </div>
-
-      <p class="label label--muted stats__source">Source · Eurostat · European Business Association, 2025</p>
-    </div>
-  </section>
-
-  <!-- 02 · How we work -->
-  <section class="section section--lg" id="focus" aria-labelledby="focus-heading">
-    <div class="wrap">
-
-      <div class="section-head">
-        <h2 class="h-section" id="focus-heading">How we work</h2>
-        <a class="label label--accent" href="ugti/">All our work →</a>
-      </div>
-
-      <div class="cards">
-
-        <a class="card" id="model" href="model/">
-          <img class="card__image"
-               src="assets/img/model.jpg"
-               srcset="assets/img/model.jpg 900w, assets/img/model@2x.jpg 1600w"
-               sizes="(max-width: 800px) 100vw, 33vw"
-               width="900" height="563"
-               alt="Two researchers at work among instruments in a laboratory."
-               loading="lazy" decoding="async">
-          <p class="label label--accent card__kicker">The model</p>
-          <h3 class="card__title">Three operating modes, one mission</h3>
-          <p class="card__text">Return, Recruit, Retain — circulation starts remote, because knowledge moves before people can.</p>
-          <p class="label label--accent card__more">Read →</p>
-        </a>
-
-        <a class="card" id="ugti" href="ugti/">
-          <img class="card__image"
-               src="assets/img/ugti.jpg"
-               srcset="assets/img/ugti.jpg 900w, assets/img/ugti@2x.jpg 1600w"
-               sizes="(max-width: 800px) 100vw, 33vw"
-               width="900" height="563"
-               alt="An engineer annotating technical drawings at a workbench."
-               loading="lazy" decoding="async">
-          <p class="label label--accent card__kicker">UGTI</p>
-          <h3 class="card__title">One engine: build, integrate, host</h3>
-          <p class="card__text">The Competency Gap Atlas, the Argonaut mechanism, and expertise embedded into real tasks.</p>
-          <p class="label label--accent card__more">Read →</p>
-        </a>
-
-        <!-- The licensed workshop photograph goes here; see README → "Replace the
-             UKRIC placeholder". Swap the src for assets/img/ukric.jpg and add the
-             matching srcset. -->
-        <a class="card" href="ugti/#ukric">
-          <img class="card__image"
-               src="assets/img/ukric.svg"
-               width="800" height="500"
-               alt="Placeholder tile for the UKRIC programme."
-               loading="lazy" decoding="async">
-          <p class="label label--accent card__kicker">Hosted programmes</p>
-          <h3 class="card__title">UKRIC: invention education, K–12</h3>
-          <p class="card__text">The first programme under the Foundation's institutional umbrella.</p>
-          <p class="label label--accent card__more">Read →</p>
-        </a>
-
+    <p class="eyebrow eyebrow--accent hero__eyebrow">Return · Recruit · Retain</p>
+    <h1 class="hero__title">Тут починається brain circulation.</h1>
+    <div class="hero__row">
+      <p class="hero__lead">Фонд Next Ukraine повертає, залучає та утримує знання, досвід і таланти — для майбутнього України.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary btn--lg" href="#contact">Стати партнером</a>
+        <a class="tlink" href="#r3">Як працює 3R<span aria-hidden="true">↗</span></a>
       </div>
     </div>
   </section>
 
-  <!-- 03 · How an integration runs -->
-  <section class="section section--lg" id="process" aria-labelledby="process-heading">
-    <div class="wrap">
-      <h2 class="h-section process__title" id="process-heading">How an integration runs</h2>
+  <div class="hero-art">
+    <div class="hero-art__inner" data-parallax>
+      <img class="hero-art__img"
+           src="assets/img/illo/illo-map3-1100.webp"
+           srcset="assets/img/illo/illo-map3-720.webp 720w, assets/img/illo/illo-map3-1100.webp 1100w, assets/img/illo/illo-map3-1672.webp 1672w"
+           sizes="(max-width: 1196px) 92vw, 1100px"
+           width="1672" height="941" fetchpriority="high" decoding="async"
+           alt="Ілюстрація: лікарка, викладачка, науковець, дослідниця та архітектор разом із колегою на відеозв'язку обговорюють спільну справу на тлі мапи України">
+    </div>
+  </div>
 
-      <ol class="steps">
-        <li class="step">
-          <p class="step__num">01</p>
-          <h3 class="step__title">Map</h3>
-          <p class="step__text">Competency gaps identified with sector leaders and recorded in the Atlas.</p>
-        </li>
-        <li class="step">
-          <p class="step__num">02</p>
-          <h3 class="step__title">Source</h3>
-          <p class="step__text">The Argonaut mechanism matches a carrier of expertise to a defined task.</p>
-        </li>
-        <li class="step">
-          <p class="step__num">03</p>
-          <h3 class="step__title">Integrate</h3>
-          <p class="step__text">The Foundation manages the engagement — remote first, no relocation required.</p>
-        </li>
-        <li class="step">
-          <p class="step__num">04</p>
-          <h3 class="step__title">Measure</h3>
-          <p class="step__text">Outcome documented, then the behavioural test: repeat engagement and referral.</p>
-        </li>
-      </ol>
+  <!-- 02 · Рамка 3R -->
+  <section class="r3" id="r3" aria-labelledby="r3-title">
+    <div class="r3__inner">
+
+      <div class="sec-head">
+        <div class="sec-head__left">
+          <p class="eyebrow eyebrow--accent">Наша рамка · 3R</p>
+          <h2 class="h-section r3__title" id="r3-title">Одна рамка.<br>Різні проєкти.</h2>
+        </div>
+        <p class="sec-head__lead r3__lead">Три напрями, через які ми працюємо з людським капіталом — від діаспори до молодих винахідників.</p>
+      </div>
+
+      <div class="r3__strip" data-r3>
+
+        <button class="r3-panel is-open" type="button" data-r3-panel aria-expanded="true">
+          <span class="r3-panel__bar" aria-hidden="true"></span>
+          <span class="r3-panel__closed" aria-hidden="true">
+            <span class="r3-panel__vtitle">Return</span>
+          </span>
+          <span class="r3-panel__open">
+            <span class="r3-panel__body">
+              <span class="r3-panel__stack">
+                <span class="r3-panel__name">Return</span>
+                <span class="r3-panel__claim">Відновлюємо зв'язок з Україною.</span>
+                <span class="r3-panel__text">Повертаємо в економіку знання, досвід і зв'язки українців за кордоном — навіть коли самі люди залишаються там. Мета — не переїзд як такий, а економічна включеність.</span>
+                <span class="r3-panel__points">
+                  <span><span aria-hidden="true">↗</span><span>Інтеграція досвіду діаспори</span></span>
+                  <span><span aria-hidden="true">↗</span><span>Відновлення професійних мереж</span></span>
+                  <span><span aria-hidden="true">↗</span><span>Повернення, робота на дві країни або регулярні приїзди</span></span>
+                </span>
+              </span>
+            </span>
+            <span class="r3-panel__art" style="background-image:url(assets/img/illo/return-call-sun-eq.webp);background-position:50% 50%"></span>
+          </span>
+        </button>
+
+        <button class="r3-panel" type="button" data-r3-panel aria-expanded="false">
+          <span class="r3-panel__bar" aria-hidden="true"></span>
+          <span class="r3-panel__closed" aria-hidden="true">
+            <span class="r3-panel__vtitle">Recruit</span>
+          </span>
+          <span class="r3-panel__open">
+            <span class="r3-panel__body">
+              <span class="r3-panel__stack">
+                <span class="r3-panel__name">Recruit</span>
+                <span class="r3-panel__claim">Залучаємо потрібні компетенції.</span>
+                <span class="r3-panel__text">Залучаємо фахівців без попереднього зв'язку з Україною там, де ринок праці поки не може дати потрібних компетенцій сам. Це точкове підсилення, а не механічне збільшення кількості людей.</span>
+                <span class="r3-panel__points">
+                  <span><span aria-hidden="true">↗</span><span>Визначаємо дефіцити компетенцій у стратегічних секторах</span></span>
+                  <span><span aria-hidden="true">↗</span><span>Створюємо умови, що приваблюють їх носіїв</span></span>
+                  <span><span aria-hidden="true">↗</span><span>Інтегруємо через роботодавців із реальним попитом</span></span>
+                </span>
+              </span>
+            </span>
+            <span class="r3-panel__art" style="background-image:url(assets/img/illo/recruit-walk-eq.webp);background-position:50% 30%"></span>
+          </span>
+        </button>
+
+        <button class="r3-panel" type="button" data-r3-panel aria-expanded="false">
+          <span class="r3-panel__bar" aria-hidden="true"></span>
+          <span class="r3-panel__closed" aria-hidden="true">
+            <span class="r3-panel__vtitle">Retain</span>
+          </span>
+          <span class="r3-panel__open">
+            <span class="r3-panel__body">
+              <span class="r3-panel__stack">
+                <span class="r3-panel__name">Retain</span>
+                <span class="r3-panel__claim">Створюємо умови для реалізації.</span>
+                <span class="r3-panel__text">Центральний елемент рамки: середовище, де знання застосовуються, обростають зв'язками і накопичуються з часом. Зменшуємо brain waste — коли люди працюють нижче своєї кваліфікації.</span>
+                <span class="r3-panel__points">
+                  <span><span aria-hidden="true">↗</span><span>Перекваліфікація під конкретний запит роботодавця чи проєкту</span></span>
+                  <span><span aria-hidden="true">↗</span><span>Менторство діаспори та зовнішніх експертів</span></span>
+                  <span><span aria-hidden="true">↗</span><span>Професійна реалізація разом з якістю життя</span></span>
+                </span>
+              </span>
+            </span>
+            <span class="r3-panel__art" style="background-image:url(assets/img/illo/retain-studio-eq.webp);background-position:50% 30%"></span>
+          </span>
+        </button>
+
+      </div>
     </div>
   </section>
 
-  <!-- 04 · What we measure -->
-  <section class="measure" aria-labelledby="measure-heading">
-    <div class="wrap section--lg">
-      <div class="measure__grid">
-        <h2 class="measure__quote" id="measure-heading">We measure integrations, <em>not registrations.</em></h2>
+  <!-- 03 · Про фонд -->
+  <section class="about" id="about" aria-labelledby="about-title">
+    <svg class="about__wave about__wave--top" aria-hidden="true" viewBox="0 0 1440 140" preserveAspectRatio="none">
+      <path d="M0,0 H1440 V85 C1436,85.3 1433,85.8 1418,87 C1403,88.2 1373,90.0 1350,92 C1328,94.0 1306,96.8 1283,99 C1261,101.2 1238,103.0 1215,105 C1193,107.0 1171,109.0 1148,111 C1126,113.0 1103,115.2 1080,117 C1058,118.8 1036,120.3 1013,122 C991,123.7 968,125.5 945,127 C923,128.5 901,130.0 878,131 C856,132.0 833,132.5 810,133 C788,133.5 766,133.8 743,134 C721,134.2 698,134.0 675,134 C653,134.0 631,134.3 608,134 C586,133.7 563,133.2 540,132 C518,130.8 496,129.3 473,127 C451,124.7 428,121.5 405,118 C383,114.5 361,110.0 338,106 C316,102.0 293,97.0 270,94 C248,91.0 226,89.3 203,88 C181,86.7 158,85.8 135,86 C113,86.2 91,87.2 68,89 C46,90.8 11,95.7 0,97 Z" fill="#fff"></path>
+      <path d="M0,2 C11,4.2 46,9.5 68,15 C91,20.5 113,28.0 135,35 C158,42.0 181,49.8 203,57 C226,64.2 248,71.3 270,78 C293,84.7 316,91.3 338,97 C361,102.7 383,107.5 405,112 C428,116.5 451,120.8 473,124 C496,127.2 518,129.3 540,131 C563,132.7 586,133.5 608,134 C631,134.5 664,134.0 675,134 L675,140 L250,140 L250,93 C242,90.3 222,83.7 203,77 C184,70.3 158,60.3 135,53 C113,45.7 91,38.5 68,33 C46,27.5 11,22.2 0,20 Z" fill="#202226"></path>
+      <path d="M0,65 C11,63.7 46,58.8 68,57 C91,55.2 113,54.2 135,54 C158,53.8 181,54.7 203,56 C226,57.3 248,59.2 270,62 C293,64.8 316,68.7 338,73 C361,77.3 383,82.8 405,88 C428,93.2 451,98.8 473,104 C496,109.2 518,114.8 540,119 C563,123.2 583,126.5 608,129 C633,131.5 676,133.2 690,134 L690,134 C676,134.0 633,135.3 608,134 C583,132.7 563,129.3 540,126 C518,122.7 496,118.2 473,114 C451,109.8 428,105.2 405,101 C383,96.8 361,92.5 338,89 C316,85.5 293,82.5 270,80 C248,77.5 226,75.3 203,74 C181,72.7 158,71.8 135,72 C113,72.2 91,73.2 68,75 C46,76.8 11,81.7 0,83 Z" fill="#FF6B0B"></path>
+    </svg>
+
+    <div class="about__inner">
+      <div class="about__copy">
+        <p class="eyebrow eyebrow--on-dark">Про фонд</p>
+        <h2 class="about__claim" id="about-title">Знання, досвід і таланти мають циркулювати — і повертатися в Україну.</h2>
+        <p class="about__text">Next Ukraine Foundation — український фонд людського капіталу. Ми розвиваємо рамку 3R і даємо інституційний дім проєктам, які її втілюють. Перший із них — UKRIC.</p>
+        <div><a class="tlink tlink--on-dark" href="#host">Детальніше про фонд<span aria-hidden="true">↗</span></a></div>
+      </div>
+
+      <div class="about__art">
+        <img src="assets/img/illo/about-return-900.webp" width="900" height="900" loading="lazy" decoding="async"
+             alt="Ілюстрація: фахівчиня з валізою та записником повертається до Києва">
+      </div>
+
+      <div class="about__why">
+        <div class="why">
+          <div class="why__head">
+            <h3 class="why__title">Чому зараз.</h3>
+            <span class="why__source">Eurostat, 2026 · European Business Association, 2025 · концепт Next Ukraine</span>
+          </div>
+          <div class="why__grid">
+            <article class="why-card">
+              <span class="why-card__bar" aria-hidden="true"></span>
+              <span class="why-card__ring" aria-hidden="true"></span>
+              <span class="why-card__label">01 / Люди</span>
+              <span class="why-card__figure">4,3 млн</span>
+              <span class="why-card__note">українців мають тимчасовий захист у ЄС.</span>
+            </article>
+            <article class="why-card">
+              <span class="why-card__bar" aria-hidden="true"></span>
+              <span class="why-card__ring" aria-hidden="true"></span>
+              <span class="why-card__label">02 / Бізнес</span>
+              <span class="why-card__figure">74%</span>
+              <span class="why-card__note">роботодавців називають брак кадрів серйозною проблемою.</span>
+            </article>
+            <article class="why-card">
+              <span class="why-card__bar" aria-hidden="true"></span>
+              <span class="why-card__ring" aria-hidden="true"></span>
+              <span class="why-card__label">03 / Робота</span>
+              <span class="why-card__figure">200 000+</span>
+              <span class="why-card__note">вакансій в Україні залишаються незаповненими.</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <svg class="about__wave about__wave--bottom" aria-hidden="true" viewBox="0 0 1440 140" preserveAspectRatio="none">
+      <path d="M0,0 H1440 V85 C1436,85.3 1433,85.8 1418,87 C1403,88.2 1373,90.0 1350,92 C1328,94.0 1306,96.8 1283,99 C1261,101.2 1238,103.0 1215,105 C1193,107.0 1171,109.0 1148,111 C1126,113.0 1103,115.2 1080,117 C1058,118.8 1036,120.3 1013,122 C991,123.7 968,125.5 945,127 C923,128.5 901,130.0 878,131 C856,132.0 833,132.5 810,133 C788,133.5 766,133.8 743,134 C721,134.2 698,134.0 675,134 C653,134.0 631,134.3 608,134 C586,133.7 563,133.2 540,132 C518,130.8 496,129.3 473,127 C451,124.7 428,121.5 405,118 C383,114.5 361,110.0 338,106 C316,102.0 293,97.0 270,94 C248,91.0 226,89.3 203,88 C181,86.7 158,85.8 135,86 C113,86.2 91,87.2 68,89 C46,90.8 11,95.7 0,97 Z" fill="#fff"></path>
+      <path d="M0,2 C11,4.2 46,9.5 68,15 C91,20.5 113,28.0 135,35 C158,42.0 181,49.8 203,57 C226,64.2 248,71.3 270,78 C293,84.7 316,91.3 338,97 C361,102.7 383,107.5 405,112 C428,116.5 451,120.8 473,124 C496,127.2 518,129.3 540,131 C563,132.7 586,133.5 608,134 C631,134.5 664,134.0 675,134 L675,140 L250,140 L250,93 C242,90.3 222,83.7 203,77 C184,70.3 158,60.3 135,53 C113,45.7 91,38.5 68,33 C46,27.5 11,22.2 0,20 Z" fill="#202226"></path>
+      <path d="M0,65 C11,63.7 46,58.8 68,57 C91,55.2 113,54.2 135,54 C158,53.8 181,54.7 203,56 C226,57.3 248,59.2 270,62 C293,64.8 316,68.7 338,73 C361,77.3 383,82.8 405,88 C428,93.2 451,98.8 473,104 C496,109.2 518,114.8 540,119 C563,123.2 583,126.5 608,129 C633,131.5 676,133.2 690,134 L690,134 C676,134.0 633,135.3 608,134 C583,132.7 563,129.3 540,126 C518,122.7 496,118.2 473,114 C451,109.8 428,105.2 405,101 C383,96.8 361,92.5 338,89 C316,85.5 293,82.5 270,80 C248,77.5 226,75.3 203,74 C181,72.7 158,71.8 135,72 C113,72.2 91,73.2 68,75 C46,76.8 11,81.7 0,83 Z" fill="#FF6B0B"></path>
+    </svg>
+  </section>
+
+  <!-- 04 · Парасолька -->
+  <section class="host" id="host" aria-labelledby="host-title">
+    <div class="host__inner">
+
+      <div class="sec-head">
+        <div class="sec-head__left">
+          <p class="eyebrow eyebrow--accent">Як ми працюємо</p>
+          <h2 class="h-section" id="host-title">Даємо проєктам інституційний дім.</h2>
+        </div>
+        <p class="sec-head__lead">Добрі ініціативи часто з'являються раніше, ніж встигають стати організаціями. Ми беремо інституційну частину на себе — команда займається програмою.</p>
+      </div>
+
+      <div class="host__cols">
+        <div class="host__col">
+          <span class="host__colhead">Що фонд бере на себе</span>
+
+          <div class="host-item">
+            <span class="host-item__num">01</span>
+            <span class="host-item__body">
+              <span class="host-item__title">Юридична основа</span>
+              <span class="host-item__text">Реєстрація, договори й правовий супровід.</span>
+            </span>
+          </div>
+          <div class="host-item">
+            <span class="host-item__num">02</span>
+            <span class="host-item__body">
+              <span class="host-item__title">Фінанси та звітність</span>
+              <span class="host-item__text">Приймаємо кошти від імені проєкту й звітуємо донорам.</span>
+            </span>
+          </div>
+          <div class="host-item">
+            <span class="host-item__num">03</span>
+            <span class="host-item__body">
+              <span class="host-item__title">Доступ до донорів</span>
+              <span class="host-item__text">Інституційна довіра та мережа партнерів фонду.</span>
+            </span>
+          </div>
+          <div class="host-item">
+            <span class="host-item__num">04</span>
+            <span class="host-item__body">
+              <span class="host-item__title">Спільна логіка</span>
+              <span class="host-item__text">Рамка 3R, бренд Next Ukraine, координація з іншими проєктами.</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="host__col">
+          <span class="host__colhead">Два формати</span>
+          <div class="host-modes">
+            <span class="host-modes__tab" aria-hidden="true"></span>
+            <div class="host-mode">
+              <span class="host-mode__kicker">Без власної організації</span>
+              <span class="host-mode__title">Повна парасолька</span>
+              <span class="host-mode__text">Фонд стає юридичним і фінансовим домом проєкту.</span>
+            </div>
+            <div class="host-mode">
+              <span class="host-mode__kicker">Із власною реєстрацією</span>
+              <span class="host-mode__title">Меморандум</span>
+              <span class="host-mode__text">Спільна робота, бренд і взаємна звітність — без об'єднання фінансів.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="host-criteria">
+        <div class="host-criteria__left">
+          <span class="eyebrow eyebrow--muted">Які проєкти ми приймаємо</span>
+          <span class="host-criteria__title">Чотири умови, щоб стати проєктом Next Ukraine.</span>
+          <a class="tlink" href="#contact">Запропонувати ініціативу<span aria-hidden="true">↗</span></a>
+        </div>
+        <ul class="dash-list">
+          <li><span class="dash-list__mark" aria-hidden="true">—</span><span>Ідея підсилює хоча б один напрям: Return, Recruit або Retain.</span></li>
+          <li><span class="dash-list__mark" aria-hidden="true">—</span><span>Проєкт не суперечить місії фонду й не створює репутаційних ризиків.</span></li>
+          <li><span class="dash-list__mark" aria-hidden="true">—</span><span>Команда вже показала, що вміє доводити справу до результату.</span></li>
+          <li><span class="dash-list__mark" aria-hidden="true">—</span><span>Співпраця вигідна обом сторонам.</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 05 · Проєкти -->
+  <section class="projects" id="projects" aria-labelledby="projects-title">
+    <div class="projects__head">
+      <p class="eyebrow">Проєкти</p>
+      <h2 class="h-section" id="projects-title">Рамка працює через проєкти.</h2>
+    </div>
+
+    <a class="pcard" href="https://ukric.org" target="_blank" rel="noopener">
+      <span class="pcard__media">
+        <img src="assets/img/illo/ukric-prototype2-1400.webp" alt="" width="1400" height="788" loading="lazy" decoding="async">
+      </span>
+      <span class="pcard__body">
+        <span class="pcard__kicker">Перший проєкт Next Ukraine</span>
+        <img class="pcard__logo" src="assets/img/logo/ukric-wordmark.svg" alt="UKRIC" width="200" height="56" loading="lazy">
+        <span class="pcard__subtitle">Винахідлива нація.</span>
+        <span class="pcard__text">Допомагаємо молоді в Україні відкрити власну здатність змінювати світ на краще — через практичну винахідницьку освіту.</span>
+        <span class="pcard__foot">
+          <span class="tlink">Перейти до проєкту<span aria-hidden="true">↗</span></span>
+          <span class="pcard__domain">ukric.org</span>
+        </span>
+      </span>
+    </a>
+
+    <div class="projects__note">
+      <div class="projects__note-left">
+        <span class="eyebrow eyebrow--muted">У рамці 3R</span>
+        <span class="projects__note-claim">UKRIC насамперед підсилює <em>Retain</em>.</span>
+      </div>
+      <p class="projects__note-text">UKRIC готує дітей не до конкурсів, а до життя: виховує винахідників і людей, які вміють розв'язувати проблеми. Мета — Україна, де винахідливість є частиною національного характеру.</p>
+    </div>
+  </section>
+
+  <!-- 06 · Партнерство -->
+  <section class="ways" id="ways" aria-labelledby="ways-title">
+    <div class="ways__inner">
+      <div class="ways__card">
+        <div class="ways__copy">
+          <div class="ways__head">
+            <p class="eyebrow eyebrow--accent">Партнерство</p>
+            <h2 class="ways__title" id="ways-title">Шукаємо проєкти для рамки 3R.</h2>
+            <p class="ways__text">Маєте ініціативу, що підсилює Return, Recruit або Retain? Next Ukraine може стати для неї інституційним домом — так, як для UKRIC.</p>
+          </div>
+          <ul class="ways__list">
+            <li>
+              <span class="dash-list__mark" aria-hidden="true">—</span>
+              <span class="ways__li-body">
+                <span class="ways__li-title">Команди з ідеєю</span>
+                <span class="ways__li-text">Ще без власної організації — беремо під повну парасольку.</span>
+              </span>
+            </li>
+            <li>
+              <span class="dash-list__mark" aria-hidden="true">—</span>
+              <span class="ways__li-body">
+                <span class="ways__li-title">Зареєстровані організації</span>
+                <span class="ways__li-text">Працюємо разом за меморандумом, у спільній логіці 3R.</span>
+              </span>
+            </li>
+            <li>
+              <span class="dash-list__mark" aria-hidden="true">—</span>
+              <span class="ways__li-body">
+                <span class="ways__li-title">Університети й компанії</span>
+                <span class="ways__li-text">Які хочуть запустити власну програму в рамці.</span>
+              </span>
+            </li>
+          </ul>
+          <div><a class="btn btn--primary btn--lg" href="#contact">Запропонувати проєкт</a></div>
+        </div>
+        <div class="ways__art">
+          <img src="assets/img/illo/ways-plan-1000.webp" width="1000" height="1250" loading="lazy" decoding="async"
+               alt="Ілюстрація: команда обговорює план простору для громади біля дошки">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · Команда -->
+  <section class="team" id="team" aria-labelledby="team-title">
+    <div class="team__head">
+      <p class="eyebrow">Команда</p>
+      <h2 class="h-section" id="team-title">Хто за цим стоїть.</h2>
+    </div>
+    <div class="team__grid">
+      <div class="team__member">
+        <div class="team__photo">Фото</div>
         <div>
-          <p class="measure__text">Trust is measured behaviourally: first integration → repeat → referral. Referral share is the earliest signal the system works — and the model accounts only for its own contribution, not for macroeconomic trends.</p>
-          <p class="measure__more"><a class="label label--on-dark" href="model/">How we measure →</a></p>
+          <div class="team__name">Ім'я Прізвище</div>
+          <div class="team__role">Роль у фонді</div>
+        </div>
+      </div>
+      <div class="team__member">
+        <div class="team__photo">Фото</div>
+        <div>
+          <div class="team__name">Ім'я Прізвище</div>
+          <div class="team__role">Роль у фонді</div>
+        </div>
+      </div>
+      <div class="team__member">
+        <div class="team__photo">Фото</div>
+        <div>
+          <div class="team__name">Ім'я Прізвище</div>
+          <div class="team__role">Роль у фонді</div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- 08 · Контакт -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="contact__copy">
+      <p class="eyebrow">Співпраця</p>
+      <h2 class="h-section" id="contact-title">Обговорімо співпрацю.</h2>
+      <p class="contact__text">Розкажіть коротко про себе — ми відповімо протягом кількох робочих днів.</p>
+    </div>
+
+    <form class="contact__form" data-contact-form novalidate>
+      <label class="field">Ім'я та прізвище
+        <input type="text" name="name" placeholder="Олена Коваль" autocomplete="name">
+      </label>
+      <label class="field">Email
+        <input type="email" name="email" placeholder="olena@example.com" autocomplete="email">
+      </label>
+      <label class="field">Організація
+        <input type="text" name="org" placeholder="Назва організації" autocomplete="organization">
+      </label>
+      <div class="contact__submit">
+        <button class="btn btn--primary btn--lg" type="submit">Надіслати запит</button>
+        <span class="contact__mail">або напишіть на <a href="mailto:argonauts@nextukraine.org">argonauts@nextukraine.org</a></span>
+      </div>
+    </form>
   </section>
 
 </main>
 
-<footer class="site-footer" id="about">
-  <div class="wrap site-footer__inner">
-
-    <div>
-      <span class="lockup">
-        <svg class="lockup__mark" width="38" height="38" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-          <g fill="none" stroke="var(--accent-500)" stroke-width="3.3" stroke-linecap="round">
-            <path d="M40.11 19.57 A32 32 0 0 0 18.70 56.65"/>
-            <path d="M28.59 73.78 A32 32 0 0 0 71.41 73.78"/>
-            <path d="M81.30 56.65 A32 32 0 0 0 59.89 19.57"/>
-          </g>
-          <circle cx="22.29" cy="66.00" r="6.7" fill="var(--accent-500)"/>
-          <circle cx="77.71" cy="66.00" r="6.7" fill="var(--accent-500)"/>
-          <circle cx="50.00" cy="18.00" r="7" fill="var(--ink-900)"/>
-        </svg>
-        <span class="lockup__word">Next Ukraine <em>Foundation</em></span>
-      </span>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__cta">
+      <div class="site-footer__claim">
+        <span class="site-footer__title">Долучіться до Next Ukraine.</span>
+        <span class="site-footer__sub">Приходьте зі своїм проєктом.</span>
+      </div>
+      <a class="btn btn--primary btn--lg" href="#contact">Обговорити співпрацю</a>
     </div>
-
-    <p class="site-footer__legal">Ukrainian charitable foundation (in formation)</p>
-
-    <nav class="site-footer__col" aria-label="Footer">
-      <a class="label label--body" href="model/">The model</a>
-      <a class="label label--body" href="ugti/">UGTI</a>
-      <a class="label label--body" href="about/">About</a>
-    </nav>
-
-    <div class="site-footer__col">
-      <a class="site-footer__contact" href="mailto:argonauts@nextukraine.org">argonauts@nextukraine.org</a>
-      <!-- TODO: replace with the LinkedIn company page URL -->
-      <a class="site-footer__contact" href="#" rel="noopener">LinkedIn</a>
+    <div class="site-footer__meta">
+      <img src="assets/img/logo/next-ukraine-lockup-white.svg" alt="Next Ukraine Foundation" width="252" height="36" loading="lazy">
+      <div class="site-footer__links">
+        <a href="#contact">Контакти</a>
+        <!-- TODO: сторінка документів -->
+        <a href="mailto:argonauts@nextukraine.org">Документи</a>
+      </div>
+      <span class="site-footer__domain">nextukraine.org</span>
     </div>
-
   </div>
 </footer>
+
+<div class="toast-slot" id="toast-slot" aria-live="polite"></div>
 
 <script src="assets/js/site.js" defer></script>
 </body>

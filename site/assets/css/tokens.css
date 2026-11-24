@@ -1,118 +1,98 @@
 /* ==========================================================================
    Next Ukraine Foundation — design tokens
    Mirrored verbatim from the Claude Design system
-   "next-ukraine-foundation-design-system-d1bdb736".
-   Edit tokens here; never hard-code a value in site.css.
+   "next-ukraine-design-system-43f7c738" (Next Ukraine Site v4).
+   Edit brand values here; never hard-code a colour in site.css.
    ========================================================================== */
 
 @import url("../fonts/fonts.css");
 
 /* --- colours ------------------------------------------------------------ */
 :root {
-  /* base — ink (navy family) */
-  --ink-900: #16233c;
-  --ink-700: #2a3e5e;
-  --ink-500: #3a4d6a;
-  --ink-300: #5b6d88;
+  /* Brand base — sampled from logo master + website concept */
+  --nu-orange: #FF6B0B;
+  --nu-orange-600: #E85D00;
+  --nu-orange-700: #C94F00;
+  --nu-orange-100: #FFE6D5;
+  --nu-ink: #111820;           /* logo ink: blue-black */
+  --nu-graphite: #202226;      /* dark surfaces: hero, footer, notebook */
+  --nu-graphite-800: #2A2D32;
+  --nu-graphite-700: #3A3D43;
+  --nu-steel: #AFB2BA;         /* grey ribbon in arcs motif */
+  --nu-grey-500: #A4A4A4;
+  --nu-grey-400: #C7C8CB;
+  --nu-grey-200: #E3E4E6;      /* hairline rules */
+  --nu-grey-100: #EFEFEF;
+  --nu-paper: #F6F5F2;         /* stationery stock */
+  --nu-white: #FFFFFF;
 
-  /* base — accent (signal orange) */
-  --accent-600: #c44a1f;
-  --accent-500: #e05a2b;
-  --accent-300: #ec9370;
-  --accent-100: #f8e4da;
-
-  /* base — warm neutrals (paper family) */
-  --paper-000: #ffffff;
-  --paper-050: #faf9f7;
-  --paper-100: #f4f3f1;
-  --paper-200: #e9e7e3;
-  --paper-300: #e4e1dc;
-  --paper-400: #c7c4bd;
-  --paper-500: #a3a09a;
-  --paper-600: #7d7a74;
-  --paper-700: #55524c;
-
-  /* semantic — text */
-  --text-display: var(--ink-900);
-  --text-heading: var(--ink-900);
-  --text-body: var(--paper-700);
-  --text-muted: var(--paper-500);
-  --text-faint: var(--paper-400);
-  --text-accent: var(--accent-500);
-  --text-on-dark: #ffffff;
-  --text-on-dark-muted: #c3cbd8;
-  --text-link: var(--accent-500);
-  --text-link-hover: var(--accent-600);
-
-  /* semantic — surfaces */
-  --surface-page: var(--paper-000);
-  --surface-card: var(--paper-100);
-  --surface-card-alt: var(--paper-050);
-  --surface-panel: var(--ink-700);
-  --surface-panel-card: var(--ink-500);
-  --surface-panel-accent: rgba(224, 90, 43, .18);
-  --surface-inset: var(--paper-200);
-
-  /* semantic — lines */
-  --line-hairline: var(--paper-300);
-  --line-strong: var(--ink-900);
-  --line-accent: var(--accent-500);
-  --line-on-dark: rgba(255, 255, 255, .22);
-
-  /* semantic — states: NUF has no green/red semantic palette in source.
-     accent = priority / active, ink = neutral, paper-500 = inactive. */
-  --state-priority: var(--accent-500);
-  --state-neutral: var(--ink-900);
-  --state-inactive: var(--paper-500);
+  /* Semantic */
+  --bg-page: var(--nu-white);
+  --bg-paper: var(--nu-paper);
+  --bg-inverse: var(--nu-graphite);
+  --surface-card: var(--nu-white);
+  --surface-muted: var(--nu-grey-100);
+  --surface-inverse: var(--nu-graphite-800);
+  --fg-1: var(--nu-ink);
+  --fg-2: #4A4E55;
+  --fg-3: #6E7279;
+  --fg-inverse: var(--nu-white);
+  --fg-inverse-2: #C9CBD0;
+  --accent: var(--nu-orange);
+  --accent-hover: var(--nu-orange-600);
+  --accent-press: var(--nu-orange-700);
+  --accent-fg: var(--nu-ink);  /* text on orange buttons is ink, per concept */
+  --border-1: var(--nu-grey-200);
+  --border-2: var(--nu-grey-400);
+  --border-inverse: rgba(255, 255, 255, .18);
+  --focus-ring: var(--nu-orange);
+  --text-body: var(--fg-1);
+  --text-muted: var(--fg-2);
+  --text-link: var(--fg-1);
+  --success: #2F8F5B;
+  --warning: #E0A100;
+  --danger: #C8362B;
 }
 
 /* --- typography --------------------------------------------------------- */
 :root {
-  /* families */
-  --font-display: "Spectral", Georgia, "Times New Roman", serif;
-  --font-body: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  /* The design ships a `fonts` variant switch; "Montserrat Alternates" is its
+     default and the one this build uses. Display is Alternates, body is plain
+     Montserrat — swapping --font-display alone changes the whole page. */
+  --font-sans: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Montserrat Alternates', 'Montserrat', sans-serif;
+  --font-body: var(--font-sans);
 
-  /* sizes — document scale, 16px body */
-  --text-4xl: 56px;
-  --text-3xl: 44px;
-  --text-2xl: 34px;
-  --text-xl: 26px;
-  --text-lg: 21px;
-  --text-md: 17px;
-  --text-base: 16px;
-  --text-sm: 14.5px;
-  --text-xs: 13px;
-  --text-2xs: 11.5px;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 800;
 
-  /* line heights */
-  --leading-display: 1.16;
-  --leading-heading: 1.24;
-  --leading-body: 1.55;
-  --leading-tight: 1.35;
-  --leading-label: 1.2;
+  --fs-hero: 88px;
+  --fs-display: 64px;
+  --fs-h1: 48px;
+  --fs-h2: 36px;
+  --fs-h3: 28px;
+  --fs-h4: 22px;
+  --fs-lead: 20px;
+  --fs-body: 17px;
+  --fs-small: 15px;
+  --fs-caption: 13px;
+  --fs-eyebrow: 13px;
+  --fs-numeral: 200px;
 
-  /* weights */
-  --weight-display: 400;
-  --weight-display-strong: 600;
-  --weight-body: 400;
-  --weight-body-strong: 500;
-  --weight-label: 500;
+  --lh-tight: 1.02;
+  --lh-heading: 1.12;
+  --lh-body: 1.5;
 
-  /* tracking */
-  --tracking-display: -0.012em;
-  --tracking-body: 0;
-  --tracking-label: 0.16em;
-  --tracking-label-tight: 0.1em;
+  --ls-tight: -0.02em;
+  --ls-heading: -0.01em;
+  --ls-eyebrow: 0.24em;
+  --ls-wordmark-sub: 0.38em;
 
-  /* semantic roles */
-  --type-display: var(--weight-display) var(--text-3xl)/var(--leading-display) var(--font-display);
-  --type-title: var(--weight-display) var(--text-2xl)/var(--leading-heading) var(--font-display);
-  --type-heading: var(--weight-display-strong) var(--text-lg)/var(--leading-heading) var(--font-display);
-  --type-stat: var(--weight-display) var(--text-3xl)/1 var(--font-display);
-  --type-body: var(--weight-body) var(--text-base)/var(--leading-body) var(--font-body);
-  --type-body-sm: var(--weight-body) var(--text-sm)/var(--leading-body) var(--font-body);
-  --type-label: var(--weight-label) var(--text-2xs)/var(--leading-label) var(--font-mono);
+  /* heading scale multiplier — the design's --hs, 1 for Montserrat Alternates */
+  --hs: 1;
 }
 
 /* --- spacing ------------------------------------------------------------ */
@@ -121,87 +101,47 @@
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-20: 80px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
 
-  --gap-card: 20px;
-  --gap-grid: 16px;
-  --pad-card: 24px;
-  --pad-card-sm: 18px;
-  --pad-panel: 48px;
-  --pad-page: 56px;
-  --section-gap: 44px;
-  --rule-gap: 14px;
+  --container: 1200px;
+  --gutter: 24px;
+  --page-pad: 64px;
+  --section-y: 96px;
 
-  --measure-body: 68ch;
-  --measure-display: 24ch;
-}
-
-/* --- borders ------------------------------------------------------------ */
-:root {
-  /* radii — the brand is square. Nothing is rounded except circular numerals. */
-  --radius-none: 0px;
-  --radius-sm: 2px;
-  --radius-pill: 999px;
-
-  --border-hairline: 1px;
-  --border-strong: 2px;
-  --border-accent-top: 3px;
-  --border-accent-left: 4px;
-  --border-bleed: 8px;
-
-  --border-card: var(--border-hairline) solid var(--line-hairline);
-  --border-rule: var(--border-hairline) solid var(--line-hairline);
-  --border-rule-strong: var(--border-strong) solid var(--line-strong);
-  --border-accent: var(--border-hairline) solid var(--line-accent);
-
-  /* elevation — flat by design: separation comes from tone + rules, not shadow. */
-  --shadow-none: none;
-  --shadow-overlay: 0 18px 48px rgba(22, 35, 60, .18);
-  --focus-ring: 0 0 0 2px var(--paper-000), 0 0 0 4px var(--accent-500);
-}
-
-/* --- motion ------------------------------------------------------------- */
-:root {
-  --ease-standard: cubic-bezier(.2, .6, .2, 1);
-  --ease-out: cubic-bezier(0, 0, .2, 1);
-  --duration-fast: 120ms;
-  --duration-base: 180ms;
-  --duration-slow: 320ms;
-  --transition-hover:
-    color var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard),
-    border-color var(--duration-fast) var(--ease-standard);
-}
-
-/* --- brand -------------------------------------------------------------- */
-:root {
-  --mark-size-sm: 20px;
-  --mark-size-md: 38px;
-  --mark-size-lg: 56px;
-  --mark-size-xl: 120px;
-  --mark-clearspace: 0.15em;
-
-  --node-size: 11px;
-  --node-size-lg: 22px;
-  --node-ink: var(--ink-900);
-  --node-global: var(--accent-500);
-  --node-potential: transparent;
-  --path-dash: 7 7;
-  --path-possible: 2px dashed var(--accent-500);
-  --path-complete: 2px solid var(--accent-500);
-  --path-structure: 1px solid var(--line-hairline);
-}
-
-/* --- page rhythm (site-level, not in the DS token set) ------------------- */
-:root {
-  --page-max: 1400px;
-  --pad-x: clamp(20px, 4vw, 56px);
-  --pad-y-lg: clamp(56px, 7vw, 96px);
+  /* site-level rhythm, derived from the design's repeated clamp() values */
+  --pad-x: clamp(20px, 5vw, 48px);
+  --pad-y-lg: clamp(80px, 10vw, 128px);
   --pad-y-md: clamp(48px, 6vw, 72px);
+}
+
+/* --- effects ------------------------------------------------------------ */
+:root {
+  --radius-0: 0px;
+  --radius-1: 4px;
+  --radius-2: 6px;
+  --radius-3: 12px;
+  --radius-round: 9999px;
+  --radius-button: var(--radius-2);
+  --radius-photo: var(--radius-3);
+
+  --stroke-hair: 1px;
+  --stroke-rule: 1.5px;
+  --stroke-arc: 14px;
+  --stroke-link: 1.5px;
+
+  --shadow-0: none;
+  --shadow-1: 0 1px 2px rgba(17, 24, 32, .06), 0 4px 16px rgba(17, 24, 32, .06);
+  --shadow-2: 0 2px 6px rgba(17, 24, 32, .08), 0 16px 40px rgba(17, 24, 32, .10);
+
+  --ease-out: cubic-bezier(.22, .61, .36, 1);
+  --ease-arc: cubic-bezier(.65, 0, .35, 1);
+  --ease-soft: cubic-bezier(.22, 1, .36, 1);
+  --dur-fast: 140ms;
+  --dur-base: 220ms;
+  --dur-slow: 600ms;
 }
