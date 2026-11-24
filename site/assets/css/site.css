@@ -17,6 +17,13 @@
 *::before,
 *::after { box-sizing: border-box; }
 
+/* Declares the page as light. Without it Chrome on Android applies its
+   automatic dark theme to pages it believes have no opinion: it darkens CSS
+   backgrounds and leaves images untouched, which reads as a grey page around
+   a white picture — exactly the symptom reported. Safari uses the same
+   property to pick form control and scrollbar colours. */
+html { color-scheme: light; }
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 24px;

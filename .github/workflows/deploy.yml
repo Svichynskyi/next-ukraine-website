@@ -74,6 +74,28 @@ jobs:
         with:
           path: _pages
 
+      - name: Wait for the artifact to become visible
+        # deploy-pages has failed on roughly half of the runs here with
+        # "No artifacts named github-pages were found" while the run summary
+        # listed that artifact — the upload is not readable through the
+        # Actions API the instant the upload step returns. Re-running always
+        # worked, which is the signature of a race rather than a config fault.
+        # Poll until the API admits the artifact exists, then hand over.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          api="/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts"
+          for i in $(seq 1 30); do
+            if gh api "$api" --jq '.artifacts[].name' | grep -qx 'github-pages'; then
+              echo "artifact visible after ${i} attempt(s)"
+              exit 0
+            fi
+            sleep 4
+          done
+          echo "::error::github-pages artifact never became visible through the Actions API"
+          gh api "$api" --jq '.artifacts[] | {name, size_in_bytes, expired}'
+          exit 1
+
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v5
