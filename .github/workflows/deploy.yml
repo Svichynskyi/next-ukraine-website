@@ -46,6 +46,21 @@ jobs:
           echo "Publishing:"
           find _pages -type f | sort
 
+      - name: Stamp the asset URLs with this commit
+        # GitHub Pages serves CSS and JS with a ten-minute cache and the
+        # filenames never change, so a returning visitor can land on new HTML
+        # while the browser still holds the previous stylesheet — which renders
+        # as a broken page, not a stale one. Rewriting ?v=DEPLOY_ID to the
+        # commit sha makes every deploy a fresh URL. Fonts are left alone:
+        # their names already change with their contents.
+        run: |
+          STAMP="${GITHUB_SHA::12}"
+          grep -rl 'DEPLOY_ID' _pages --include='*.html' | while read -r f; do
+            sed -i "s/DEPLOY_ID/$STAMP/g" "$f"
+          done
+          echo "asset version: $STAMP"
+          grep -rho 'assets/[a-z]*/[a-z.]*?v=[0-9a-f]*' _pages --include='*.html' | sort -u
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

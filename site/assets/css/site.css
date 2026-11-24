@@ -386,12 +386,17 @@ img, svg { display: block; max-width: 100%; }
   margin: clamp(-24px, -2vw, 0px) auto 0;
 }
 
+/* The design knocks this illustration's background out with
+   mix-blend-mode:multiply. On iOS Safari that renders as a grey slab: the
+   `filter` and `will-change` below each promote the image to its own
+   compositing layer, and blending across layers is unreliable there.
+   Measured, the artwork's background is rgb(253,253,253) — multiplying it
+   over a white page changes nothing visible, so the blend is dropped and
+   the filter alone reproduces the intended result on every browser. */
 .hero-art__img {
   width: 100%;
   height: auto;
   transition: transform 900ms var(--ease-soft);
-  will-change: transform;
-  mix-blend-mode: multiply;
   filter: brightness(1.05) contrast(1.08);
 }
 
