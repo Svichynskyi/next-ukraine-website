@@ -10,6 +10,11 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  # deploy-pages looks the uploaded artifact up through the Actions API.
+  # Without this the API answers with an empty list rather than a 403, and
+  # the step fails as "No artifacts named github-pages were found" while the
+  # run summary plainly shows that artifact — which is what happened here.
+  actions: read
 
 # Never let two deployments race; queue instead of cancelling a live publish.
 concurrency:
