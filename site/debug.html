@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Діагностика — Next Ukraine</title>
+<style>
+  body { margin: 0; padding: 20px; background: #fff; color: #111820;
+         font: 15px/1.5 -apple-system, system-ui, sans-serif; }
+  h1 { font-size: 19px; margin: 0 0 4px; }
+  .sub { color: #6E7279; font-size: 13px; margin-bottom: 20px; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 24px; }
+  td { padding: 7px 0; border-bottom: 1px solid #E3E4E6; vertical-align: top; font-size: 14px; }
+  td:first-child { color: #6E7279; width: 46%; padding-right: 10px; }
+  td:last-child { font-family: ui-monospace, Menlo, monospace; font-size: 13px; word-break: break-all; }
+  .ok { color: #2F8F5B; font-weight: 700; }
+  .bad { color: #C8362B; font-weight: 700; }
+  h2 { font-size: 15px; margin: 26px 0 8px; }
+  .strip { display: flex; height: 64px; border: 1px solid #E3E4E6; }
+  .strip div { flex: 1; display: flex; align-items: flex-end; justify-content: center;
+               font-size: 10px; padding-bottom: 3px; font-family: ui-monospace, monospace; }
+  .note { background: #F6F5F2; padding: 14px; font-size: 13px; line-height: 1.5; }
+  img.test { width: 100%; display: block; }
+  .frame { border: 2px solid #FF6B0B; }
+</style>
+</head>
+<body>
+
+<h1>Діагностика фону ілюстрації</h1>
+<p class="sub">Сторінка службова. Зробіть знімок екрана й надішліть його.</p>
+
+<table id="out"></table>
+
+<h2>1 — смуга порівняння</h2>
+<div class="strip">
+  <div style="background:#fff">#fff</div>
+  <div style="background:#fdfdfd">#fdfdfd</div>
+  <div style="background:#fafafa">#fafafa</div>
+  <div style="background:#f6f5f2">#f6f5f2</div>
+  <div style="background:#efefef">#efefef</div>
+</div>
+<p class="sub">Якщо всі п'ять однакові — екран не розрізняє ці відтінки, і причина сірого не в кольорі фону.</p>
+
+<h2>2 — зображення без жодних стилів</h2>
+<img class="test frame" id="raw" alt="">
+<p class="sub">Помаранчева рамка показує межі файлу. Сіре має бути <b>всередині</b> рамки, якщо винне зображення.</p>
+
+<h2>3 — те саме, як на сайті</h2>
+<div style="background:#fff">
+  <img class="test" id="styled" style="filter:brightness(1.05) contrast(1.08)" alt="">
+</div>
+
+<div class="note" id="verdict"></div>
+
+<script>
+(function () {
+  var rows = [];
+  var add = function (k, v) { rows.push('<tr><td>' + k + '</td><td>' + v + '</td></tr>'); };
+
+  var SRC = 'assets/img/illo/illo-map3-1100-v2.webp';
+  var img = new Image();
+  img.crossOrigin = 'anonymous';
+
+  img.onload = function () {
+    document.getElementById('raw').src = SRC;
+    document.getElementById('styled').src = SRC;
+
+    add('екран', window.innerWidth + '×' + window.innerHeight + ' @' + (window.devicePixelRatio || 1) + 'x');
+    add('браузер', navigator.userAgent.slice(0, 68));
+    add('файл', SRC.split('/').pop());
+    add('розмір файлу', img.naturalWidth + '×' + img.naturalHeight);
+
+    var cv = document.createElement('canvas');
+    cv.width = img.naturalWidth; cv.height = img.naturalHeight;
+    var ctx = cv.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+
+    var sample = function (x, y) {
+      try { var d = ctx.getImageData(x, y, 1, 1).data; return d[0] + ',' + d[1] + ',' + d[2]; }
+      catch (e) { return 'заблоковано'; }
+    };
+
+    var corner = sample(2, 2);
+    add('кут зображення', 'rgb(' + corner + ')');
+    add('кут протилежний', 'rgb(' + sample(img.naturalWidth - 3, img.naturalHeight - 3) + ')');
+
+    var pure = corner === '255,255,255';
+    add('фон чисто білий?', pure ? '<span class="ok">так</span>' : '<span class="bad">ні</span>');
+
+    add('підтримка webp', 'так (завантажилось)');
+    add('темна тема системи', window.matchMedia('(prefers-color-scheme: dark)').matches ? 'УВІМКНЕНА' : 'вимкнена');
+    add('контраст підвищено', window.matchMedia('(prefers-contrast: more)').matches ? 'так' : 'ні');
+    add('час', new Date().toLocaleTimeString('uk-UA'));
+
+    document.getElementById('out').innerHTML = rows.join('');
+
+    var v = document.getElementById('verdict');
+    if (corner === 'заблоковано') {
+      v.innerHTML = 'Піксель прочитати не вдалося. Орієнтуйтесь на блоки 2 і 3 вище.';
+    } else if (pure) {
+      v.innerHTML = '<b>Фон у файлі чисто білий.</b> Якщо сіре все одно видно — причина не в зображенні, а в тому, як браузер його показує. Надішліть знімок цієї сторінки цілком.';
+    } else {
+      v.innerHTML = '<b>Фон не білий: rgb(' + corner + ').</b> Браузер віддає стару версію з кеша.';
+    }
+  };
+
+  img.onerror = function () {
+    document.getElementById('out').innerHTML =
+      '<tr><td>помилка</td><td class="bad">зображення не завантажилось: ' + SRC + '</td></tr>';
+  };
+
+  img.src = SRC + '?t=' + Date.now();
+}());
+</script>
+</body>
+</html>
