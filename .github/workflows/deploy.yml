@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
 
     steps:
       - name: Check out
@@ -74,28 +74,38 @@ jobs:
         with:
           path: _pages
 
-      - name: Wait for the artifact to become visible
-        # deploy-pages has failed on roughly half of the runs here with
-        # "No artifacts named github-pages were found" while the run summary
-        # listed that artifact — the upload is not readable through the
-        # Actions API the instant the upload step returns. Re-running always
-        # worked, which is the signature of a race rather than a config fault.
-        # Poll until the API admits the artifact exists, then hand over.
+      - name: Wait for the artifact to settle
+        # deploy-pages fails intermittently here with "No artifacts named
+        # github-pages were found" while the run summary lists it. Polling the
+        # REST API was not enough: that poll passes and the very next step
+        # still cannot see the artifact, so deploy-pages reads it through a
+        # different service that lags behind. Wait for REST, then give that
+        # other service a fixed moment to catch up.
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           api="/repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/artifacts"
           for i in $(seq 1 30); do
             if gh api "$api" --jq '.artifacts[].name' | grep -qx 'github-pages'; then
-              echo "artifact visible after ${i} attempt(s)"
+              echo "artifact listed after ${i} attempt(s)"
+              sleep 20
               exit 0
             fi
             sleep 4
           done
-          echo "::error::github-pages artifact never became visible through the Actions API"
+          echo "::error::github-pages artifact never appeared in the Actions API"
           gh api "$api" --jq '.artifacts[] | {name, size_in_bytes, expired}'
           exit 1
 
       - name: Deploy
         id: deployment
+        # First attempt is allowed to fail: the lookup above is best effort,
+        # and a re-run by hand has always succeeded. Retrying in place saves
+        # the round trip.
+        continue-on-error: true
+        uses: actions/deploy-pages@v5
+
+      - name: Deploy — second attempt
+        id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v5
