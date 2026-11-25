@@ -82,22 +82,16 @@
     strip.addEventListener('mouseleave', function () { clearTimeout(hoverTimer); });
   }
 
-  /* ------------------------------------------------------- map parallax -- */
-  var art = document.querySelector('[data-parallax]');
+  /* ------------------------------------------------------------ hero wave -- */
+  var wave = document.querySelector('.hero__wave');
 
-  if (art && !reduced) {
-    var img = art.querySelector('img');
-
-    art.addEventListener('mousemove', function (e) {
-      var b = art.getBoundingClientRect();
-      var x = (e.clientX - b.left) / b.width * 2 - 1;
-      var y = (e.clientY - b.top) / b.height * 2 - 1;
-      img.style.transform = 'translate3d(' + (x * -14).toFixed(1) + 'px,' + (y * -10).toFixed(1) + 'px,0) scale(1.03)';
+  if (wave && reduced) {
+    /* SMIL cannot be switched off from CSS, so honour the preference here:
+       show every line already drawn, then stop the clock. */
+    [].forEach.call(wave.querySelectorAll('clipPath rect'), function (r) {
+      r.setAttribute('width', '1200');
     });
-
-    art.addEventListener('mouseleave', function () {
-      img.style.transform = 'translate3d(0,0,0) scale(1)';
-    });
+    if (wave.pauseAnimations) wave.pauseAnimations();
   }
 
   /* --------------------------------------------------------------- form -- */

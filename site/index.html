@@ -114,27 +114,71 @@
 
   <!-- 01 · Hero -->
   <section class="hero" id="top">
-    <p class="eyebrow eyebrow--accent hero__eyebrow">Return · Recruit · Retain</p>
-    <h1 class="hero__title">Тут починається brain circulation.</h1>
-    <div class="hero__row">
-      <p class="hero__lead">Фонд Next Ukraine повертає, залучає та утримує знання, досвід і таланти — для майбутнього України.</p>
-      <div class="hero__actions">
-        <a class="btn btn--primary btn--lg" href="#contact">Стати партнером</a>
-        <a class="tlink" href="#r3">Як працює 3R<span aria-hidden="true">↗</span></a>
+    <div class="hero__photo" role="img"
+         aria-label="Команда фахівців обговорює спільний проєкт за столом, колега долучається онлайн">
+
+      <!-- The wave that carries the white header down into the photo. Its three
+           lines are revealed left to right once, then drift; site.js freezes
+           the whole thing when the visitor asks for reduced motion. -->
+      <svg class="hero__wave" viewBox="0 0 1200 140" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <clipPath id="nuW1" clipPathUnits="userSpaceOnUse">
+            <rect x="0" y="-40" width="0" height="220">
+              <animate attributeName="width" from="0" to="1200" dur="1.8s" begin="0.15s" fill="freeze"
+                       calcMode="spline" keyTimes="0;1" keySplines="0.65 0 0.35 1"/>
+            </rect>
+          </clipPath>
+          <clipPath id="nuW2" clipPathUnits="userSpaceOnUse">
+            <rect x="0" y="-40" width="0" height="220">
+              <animate attributeName="width" from="0" to="1200" dur="1.8s" begin="0.35s" fill="freeze"
+                       calcMode="spline" keyTimes="0;1" keySplines="0.65 0 0.35 1"/>
+            </rect>
+          </clipPath>
+          <clipPath id="nuW3" clipPathUnits="userSpaceOnUse">
+            <rect x="0" y="-40" width="0" height="220">
+              <animate attributeName="width" from="0" to="1200" dur="1.8s" begin="0s" fill="freeze"
+                       calcMode="spline" keyTimes="0;1" keySplines="0.65 0 0.35 1"/>
+            </rect>
+          </clipPath>
+        </defs>
+
+        <path d="M0,0 H1200 V52 C1120,22 1000,10 800,22 C500,40 250,60 0,128 Z" fill="#fff">
+          <animate attributeName="d" dur="10s" begin="0s" repeatCount="indefinite"
+                   calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+                   values="M0,0 H1200 V52 C1120,22 1000,10 800,22 C500,40 250,60 0,128 Z;M0,0 H1200 V40 C1120,12 980,24 780,30 C480,46 240,48 0,116 Z;M0,0 H1200 V52 C1120,22 1000,10 800,22 C500,40 250,60 0,128 Z"/>
+        </path>
+
+        <path d="M0,34 C200,74 380,62 600,32 C820,2 1000,-2 1200,12" fill="none" stroke="#D5D6DA"
+              stroke-width="2.5" stroke-linecap="round" vector-effect="non-scaling-stroke" clip-path="url(#nuW1)">
+          <animate attributeName="d" dur="13s" begin="-4s" repeatCount="indefinite"
+                   calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+                   values="M0,34 C200,74 380,62 600,32 C820,2 1000,-2 1200,12;M0,46 C220,58 400,78 620,42 C840,8 1010,10 1200,2;M0,34 C200,74 380,62 600,32 C820,2 1000,-2 1200,12"/>
+        </path>
+
+        <path d="M0,70 C320,24 700,44 1200,4" fill="none" stroke="#E4E5E8"
+              stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" clip-path="url(#nuW2)">
+          <animate attributeName="d" dur="16s" begin="-9s" repeatCount="indefinite"
+                   calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+                   values="M0,70 C320,24 700,44 1200,4;M0,56 C300,40 720,24 1200,18;M0,70 C320,24 700,44 1200,4"/>
+        </path>
+
+        <path d="M0,128 C250,60 500,40 800,22 C1000,10 1120,22 1200,52" fill="none" stroke="#FF6B0B"
+              stroke-width="5" stroke-linecap="round" vector-effect="non-scaling-stroke" clip-path="url(#nuW3)">
+          <animate attributeName="d" dur="10s" begin="0s" repeatCount="indefinite"
+                   calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+                   values="M0,128 C250,60 500,40 800,22 C1000,10 1120,22 1200,52;M0,116 C240,48 480,46 780,30 C980,24 1120,12 1200,40;M0,128 C250,60 500,40 800,22 C1000,10 1120,22 1200,52"/>
+        </path>
+      </svg>
+
+      <div class="hero__scrim" aria-hidden="true"></div>
+
+      <div class="hero__caption">
+        <div class="wrap">
+          <h1 class="hero__title">Тут починається <span>brain circulation.</span></h1>
+        </div>
       </div>
     </div>
   </section>
-
-  <div class="hero-art">
-    <div class="hero-art__inner" data-parallax>
-      <img class="hero-art__img"
-           src="assets/img/illo/illo-map3-1100-v4.webp"
-           srcset="assets/img/illo/illo-map3-720-v4.webp 720w, assets/img/illo/illo-map3-1100-v4.webp 1100w, assets/img/illo/illo-map3-1672-v4.webp 1672w"
-           sizes="(max-width: 1196px) 92vw, 1100px"
-           width="1672" height="941" fetchpriority="high" decoding="async"
-           alt="Ілюстрація: лікарка, викладачка, науковець, дослідниця та архітектор разом із колегою на відеозв'язку обговорюють спільну справу на тлі мапи України">
-    </div>
-  </div>
 
   <!-- 02 · Рамка 3R -->
   <section class="r3" id="r3" aria-labelledby="r3-title">
@@ -370,12 +414,11 @@
     </div>
 
     <a class="pcard" href="https://ukric.org" target="_blank" rel="noopener">
-      <span class="pcard__media">
-        <img src="assets/img/illo/ukric-prototype2-1400-v3.webp" alt="" width="1400" height="788" loading="lazy" decoding="async">
-      </span>
+      <span class="pcard__media" role="img" aria-label="Учні UKRIC працюють над екоекспериментом"></span>
       <span class="pcard__body">
         <span class="pcard__kicker">Перший проєкт Next Ukraine</span>
-        <img class="pcard__logo" src="assets/img/logo/ukric-wordmark.svg" alt="UKRIC" width="200" height="56" loading="lazy">
+        <img class="pcard__logo" src="assets/img/logo/ukric-wordmark.svg" alt="UKRIC" width="280" height="78" loading="lazy">
+        <span class="pcard__rule" aria-hidden="true"><span></span><span></span></span>
         <span class="pcard__subtitle">Винахідлива нація.</span>
         <span class="pcard__text">Допомагаємо молоді в Україні відкрити власну здатність змінювати світ на краще — через практичну винахідницьку освіту.</span>
         <span class="pcard__foot">
