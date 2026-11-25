@@ -107,5 +107,5 @@ jobs:
 
       - name: Deploy — second attempt
         id: deployment_retry
-        if: steps.deployment.outcome == 'failure'
+        if: steps.deployment.outputs.page_url == ''
         uses: actions/deploy-pages@v5
