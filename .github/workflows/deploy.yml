@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Check out
@@ -99,13 +99,5 @@ jobs:
 
       - name: Deploy
         id: deployment
-        # First attempt is allowed to fail: the lookup above is best effort,
-        # and a re-run by hand has always succeeded. Retrying in place saves
-        # the round trip.
-        continue-on-error: true
         uses: actions/deploy-pages@v5
 
-      - name: Deploy — second attempt
-        id: deployment_retry
-        if: steps.deployment.outputs.page_url == ''
-        uses: actions/deploy-pages@v5
