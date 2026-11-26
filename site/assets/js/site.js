@@ -142,7 +142,7 @@
       /* The form has no backend yet — see the TODO block in index.html. It
          confirms receipt visually, exactly as the design does, and the live
          email link beside the button is the route that actually reaches us. */
-      toast('Дякуємо. Поки що надішліть лист на argonauts@nextukraine.org — форма запрацює найближчим часом.');
+      toast('Дякуємо. Поки що надішліть лист на contact@nextukraine.org — форма запрацює найближчим часом.');
     });
   }
 }());
